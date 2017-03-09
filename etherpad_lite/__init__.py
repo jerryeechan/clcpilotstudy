@@ -21,7 +21,7 @@ class EtherpadException(Exception): pass
 
 class EtherpadLiteClient(object):
 
-    def __init__(self, base_params={}, base_url='http://0.0.0.0:9001/api', #'https://clc-etherpad.herokuapp.com/api'
+    def __init__(self, base_params={}, base_url='https://clc-etherpad.herokuapp.com/api', #'https://clc-etherpad.herokuapp.com/api'
                        api_version='1.2.13', timeout=20):
         self.api_version = api_version
         self.base_params = utf8_encode_dict_values(base_params)

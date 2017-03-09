@@ -12,8 +12,8 @@ def index():
 
 @app.route("/getpadusercount")
 def getPadUsersCount(userCount = None):
-	# c = EtherpadLiteClient(base_params={'apikey':'521b9da922ce0c1a01c929eab6e35970edbc25629c2a3080a9a59437a9810138'})
-	c = EtherpadLiteClient(base_params={'apikey':'555ddf5d51cba5e38e93d538742a02f7d1b2ea968ca4dcccb983f31c954d632b'})
+	c = EtherpadLiteClient(base_params={'apikey':'8ca139f10b904bf9420718c4977c4f9e2a06fca26a20c81d337e2a08c3bb478a'})
+	# c = EtherpadLiteClient(base_params={'apikey':'555ddf5d51cba5e38e93d538742a02f7d1b2ea968ca4dcccb983f31c954d632b'})
 	padList = c.listAllPads()
 	userCount = {}
 
@@ -25,7 +25,7 @@ def getPadUsersCount(userCount = None):
 @app.route("/setText")
 def pasteText(text=None):
 	a = request.args.get('a')
-	c = EtherpadLiteClient(base_params={'apikey':'555ddf5d51cba5e38e93d538742a02f7d1b2ea968ca4dcccb983f31c954d632b'})
+	c = EtherpadLiteClient(base_params={'apikey':'8ca139f10b904bf9420718c4977c4f9e2a06fca26a20c81d337e2a08c3bb478a'})
 	padList = c.listAllPads()
 	c.appendText(padID=padList['padIDs'][0], text=a)
 	return json.dumps('test')
