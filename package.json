@@ -1,0 +1,15 @@
+{
+  "name": "transcription-gh-pages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jQuery.tubeplayer.min.js",
+  "dependencies": {
+    "etherpad-lite-client": "^0.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
