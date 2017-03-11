@@ -2,7 +2,7 @@
 
   $.fn.pad = function( options ) {
     var settings = {
-      'host'              : 'http://0.0.0.0:9001',
+      'host'              : 'http://140.114.79.181:9001',
       'baseUrl'           : '/p/',
       'showControls'      : true,
       'showChat'          : false,
@@ -14,7 +14,7 @@
       'userColor'         : true,
       'hideQRCode'        : false,
       'alwaysShowChat'    : false,
-      'width'             : 100,
+      'width'             : 500,
       'height'            : 600,
       'border'            : 0,
       'borderStyle'       : 'solid',
@@ -61,7 +61,7 @@
           iFrameLink = iFrameLink + pluginParams;
           iFrameLink = iFrameLink +'" style="border:' + settings.border;
           iFrameLink = iFrameLink +'; border-style:' + settings.borderStyle;
-          iFrameLink = iFrameLink +';" width="' + '100%';//settings.width;
+          iFrameLink = iFrameLink +';" width="' + settings.width; //'100%';
           iFrameLink = iFrameLink +'" height="' + settings.height; 
           iFrameLink = iFrameLink +'"></iframe>';
       

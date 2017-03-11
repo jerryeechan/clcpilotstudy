@@ -27,7 +27,8 @@
 		<input type="text" id="whatupyo" hidden>
 		<input type="text" id="dur_holder" hidden>
 		
-		<div id="lines">
+		<button onClick="scrollToBottom()">Scroll to Bottom</button>
+		<div id="lines" style="height:250px; overflow-y: scroll; overflow-x: hidden;">
 			
 		</div>
 		</div>
@@ -38,9 +39,20 @@
 		</div>
 		
 		<script type="text/javascript">
-		
+
         // The most basic example
 		var pad = $('#examplePadBasic').pad({'padId':'test'}); // sets the pad id and puts the pad in the div
+		
+		/*
+		var add = setInterval(function() {
+		    // allow 1px inaccuracy by adding 1
+		    var isScrolledToBottom = lines.scrollHeight - lines.clientHeight <= lines.scrollTop + 1;
+		   console.log(lines.scrollHeight - lines.clientHeight,  lines.scrollTop + 1);
+
+		    // scroll to bottom if isScrolledToBotto
+		    if(isScrolledToBottom)
+		      lines.scrollTop = lines.scrollHeight;
+		}, 300);*/
 
 		function setContent(text) {
 	        $.ajax({
@@ -60,6 +72,10 @@
 	        //setTimeout(getPadUsersCount, 3000); // call getPadUsersCount every 3 seconds
 	    }
 
+	   function scrollToBottom(){
+				//lines.scrollTop = lines.scrollHeight - lines.clientHeight;
+				lines.scrollTop = lines.scrollHeight;			
+	   }
 
 		/*
 		var url = "http://0.0.0.0:9001/api/1/getText?apikey="+apikey+"&padId=test";
@@ -67,11 +83,7 @@
 			  url: url,
 			}).done(function() {
 		});
-		*/
-		
-		
-		
-	    
+		*/   
 	    
 	    </script>
 

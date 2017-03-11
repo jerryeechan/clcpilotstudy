@@ -18,8 +18,8 @@ jQuery("#player").tubeplayer({
 
 $.ajax({
     type: "GET",
-    url: 'https://www.youtube.com/api/timedtext?v=a3CbSDzW2N0&asr_langs=fr%2Cnl%2Cit%2Ces%2Cpt%2Cja%2Cko%2Cen%2Cru%2Cde&key=yttt1&caps=asr&hl=zh_TW&sparams=asr_langs%2Ccaps%2Cv%2Cexpire&signature=6989FF3CAB9B6247C7B214071530E1A3EE19E013.9F55F43F94FE474C0C7D9AFD326B8E3016660558&expire=1489089298&lang=zh-TW&fmt=srv3',
-    //url: 'https://www.youtube.com/api/timedtext?caps=asr&asr_langs=ko%2Cit%2Cde%2Cnl%2Cpt%2Cru%2Cfr%2Cen%2Cja%2Ces&sparams=asr_langs%2Ccaps%2Cv%2Cexpire&signature=19898FCD8DEFB1C8AFF418A9AB74B49A699E497C.BF1BDB4F0663977E78665E01F42B527AC128A246&key=yttt1&v=a3CbSDzW2N0&hl=zh_TW&expire=1489062188&lang=zh-TW&fmt=srv3',
+    // url: 'https://www.youtube.com/api/timedtext?hl=zh_TW&caps=asr&expire=1489170132&asr_langs=nl%2Cja%2Cpt%2Cen%2Cde%2Cko%2Cit%2Cfr%2Ces%2Cru&key=yttt1&v=a3CbSDzW2N0&sparams=asr_langs%2Ccaps%2Cv%2Cexpire&signature=9BBA1C4F23032524B531BD95112537CA789933DA.B32137E6A09AEDE826DF5B133F55A9181B704D9B&lang=zh-TW&fmt=srv3',
+    url: 'https://www.youtube.com/api/timedtext?asr_langs=fr%2Cru%2Cit%2Ces%2Cpt%2Cnl%2Cja%2Cen%2Cko%2Cde&v=a3CbSDzW2N0&expire=1489234888&key=yttt1&hl=zh_TW&sparams=asr_langs%2Ccaps%2Cv%2Cexpire&caps=asr&signature=107ADE8307C20D7ABBE1B769D8A29C2FCF676BAE.66DEF9909EC88F135C9AF265F6ABF652432D70F6&lang=zh-TW&fmt=srv3',
     dataType: "xml",
     success: function(xml) {
         $(xml).find('p').each(function() {
@@ -58,18 +58,27 @@ window.setInterval(function() {
     var current_text = $("[data-time]").filter(addremoveclass)[0].innerHTML;
 
     if(current_text.indexOf(prev_text)==-1){
-        $('#lines').append('<p><a class="clickText">'+current_text+"</a></p>");
-        $('.clickText').click(function(){
+        // var newline = '<p><a class="clickText">'+current_text+"</a></p>";
+        var newline = $(document.createElement("p")).html('<a class="clickText">'+current_text+"</a>");
+        $('#lines').append(newline);
+        
+        newline.click(function(){
             console.log('click');
             setContent($(this).text());
         });
     	$('#dynamic').val($('#dynamic').val() + $("[data-time]").filter(addremoveclass)[0].innerHTML );
-    	console.log("current_text:" + current_text);
     }
     prev_text = current_text;
 
-    var textarea = document.getElementById('dynamic');
-	textarea.scrollTop = textarea.scrollHeight;
+    var lines = document.getElementById('lines');
+    console.log("scrollHeight:" + lines.scrollHeight +", top: " + lines.scrollTop);
+    if (lines.scrollTop + 50 >= lines.scrollHeight - lines.clientHeight)
+        lines.scrollTop = lines.scrollHeight;
+    else
+        console.log("scrolling");
+    
+        //lines.scrollTop = lines.scrollHeight;
+        
 
 }, 500);
 
